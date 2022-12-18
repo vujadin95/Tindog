@@ -14,10 +14,10 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #fff;
   max-width: 550px;
   margin: 0 auto;
   border: 1px solid black;
+  margin-bottom: 2rem;
 }
 
 header {
@@ -25,11 +25,15 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 header>img {
-  width: 34px;
-  height: 34px;
+  cursor: pointer;
+  width: 2.125rem;
+  /* find another way to set width */
+  height: 2.125rem;
+  /* find another way to set height */
 }
 
 header>img:nth-child(2) {
@@ -37,15 +41,72 @@ header>img:nth-child(2) {
   height: auto;
 }
 
-
-.dog {
-  width: 100%;
-  padding: 0.5em;
-  border-radius: 1em;
-  position: relative;
+/* styling main page content */
+.container {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(246, 247, 251, 1) 100%);
 }
 
+main {
+  position: relative;
+  color: rgba(248, 248, 248, 1);
+  padding: 0 0.5em;
+}
 
-.badge {
-  width: 50px;
+.like-badge {
+  width: 42%;
+  transform: rotate(-30deg);
+  position: absolute;
+  top: 8%;
+  left: 5%;
+}
+
+.dog-img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.description {
+  position: absolute;
+  left: 1.25em;
+  bottom: 1em;
+  width: 90%;
+}
+
+.description>h2 {
+  font-size: 2rem;
+}
+
+.description>p {
+  font-size: 1.5rem;
+}
+
+/* styling footer of the page */
+footer {
+  padding: 1.5em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+footer>button {
+  display: flex;
+  border: none;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 10px 20px #E9E9EA;
+  padding: 2em;
+}
+
+footer>button:first-child:hover {
+  background: #FFE7EF;
+  box-shadow: 0px 10px 20px #EDD9DF;
+  transition: background-color 0.5s ease;
+}
+
+footer>button:last-child:hover {
+  background-color: rgba(219, 255, 244, 1);
+  transition: background-color 0.5s ease;
+  box-shadow: 0px 10px 20px #CCF1E6;
 }
