@@ -1,69 +1,64 @@
 import dogs from "./data.js";
 import Dog from "./Dog.js";
 
-// taking controle over LIKE button
-function handleLike() {
+function handleHeartBtn() {
   if (!dog.hasBeenSwiped) {
+    getLikeImg();
+    dog.hasBeenSwiped = true;
     dog.hasBeenLiked = true;
-    dog.hasBeenSwiped = true;
-    if (dog.hasBeenSwiped) {
-      setTimeout(() => {
-        dog = new Dog(getNewDog());
-        render();
-        dog.hasBeenSwiped = false;
-        if (!dog.name) {
-          endApp();
-        }
-      }, 1000);
-    }
-    render();
+    setTimeout(() => {
+      dog = new Dog(getNewDog());
+      render();
+    }, 1500);
   }
 }
-document.getElementById("like").addEventListener("click", handleLike);
+document.getElementById("like").addEventListener("click", handleHeartBtn);
 
-// taking controle over CROSS button
-function handleCross() {
+function handleCrossBtn() {
   if (!dog.hasBeenSwiped) {
-    dog.hasBeenDisliked = true;
-    dog.hasBeenLiked = false;
+    getNopeImg();
     dog.hasBeenSwiped = true;
-    if (dog.hasBeenSwiped) {
-      setTimeout(() => {
-        dog = new Dog(getNewDog());
-        dog.hasBeenDisliked = false;
-        dog.hasBeenSwiped = false;
-        render();
-        if (!dog.name) {
-          endApp();
-        }
-      }, 1000);
-    }
-    render();
+    setTimeout(() => {
+      dog = new Dog(getNewDog());
+      render();
+    }, 1500);
   }
 }
+document.getElementById("cross").addEventListener("click", handleCrossBtn);
 
-document.getElementById("cross").addEventListener("click", handleCross);
-
-// defining new instance of dog
-function getNewDog() {
-  return dogs.length > 0 ? dogs.shift() : {};
-}
-
-// display message after last dog in dogs array
-function endApp() {
+function endMessage() {
   return (document.body.innerHTML = `
     <div class="end-message">
-      <p>New Tindog profiles are coming. Stay tuned!</p>
-      <p class="emoji">😍</p>
+      <p>New Tindog profiles are coming soon.<br>Stay tuned!</br></p>
+      <p class="emoji">🤗</p>
     </div>
   `);
 }
 
-// rendering content to main section
-function render() {
-  document.getElementById("main").innerHTML = dog.getDog();
+function getLikeImg() {
+  document.getElementById("like-nope-img").innerHTML = `
+  <img class="like-badge" src="/images/badge-like.png" alt="">
+  `;
 }
 
-// declaring new dog
+function getNopeImg() {
+  document.getElementById("like-nope-img").innerHTML = `
+  <img class="like-badge" src="/images/badge-nope.png" alt="">
+  `;
+}
+
+function getNewDog() {
+  let nextDogFromArray = dogs.shift();
+  return nextDogFromArray ? nextDogFromArray : {};
+}
+
+function render() {
+  if (!dog.name) {
+    endMessage();
+  } else {
+    document.getElementById("main").innerHTML = dog.getDogHtml();
+  }
+}
+
 let dog = new Dog(getNewDog());
 render();

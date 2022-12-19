@@ -16,13 +16,12 @@ body {
   font-family: 'Poppins', sans-serif;
   max-width: 550px;
   margin: 0 auto;
-  border: 5px solid black;
+  border: 2px solid black;
   border-radius: 20px;
-  margin-bottom: 2rem;
 }
 
 header {
-  padding: 1.4375em;
+  padding: 1.25em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,16 +33,15 @@ header {
 
 header>img {
   cursor: pointer;
-  width: 6%;
-  height: 6%;
-}
-
-header>img:nth-child(2) {
-  width: 16%;
+  width: 6.5%;
   height: auto;
 }
 
-/* styling main page content */
+header>img:nth-child(2) {
+  width: 16.5%;
+  height: auto;
+}
+
 .container {
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(246, 247, 251, 1) 100%);
   border-bottom-left-radius: 20px;
@@ -67,6 +65,7 @@ main {
 .dog-img {
   width: 100%;
   border-radius: 15px;
+  vertical-align: middle;
 }
 
 .description {
@@ -74,6 +73,8 @@ main {
   left: 1.25em;
   bottom: 1em;
   width: 90%;
+  margin-bottom: 0;
+
 }
 
 .description>h2 {
@@ -84,7 +85,6 @@ main {
   font-size: 1.5rem;
 }
 
-/* styling footer of the page */
 footer {
   padding: 1.5em 0;
   display: flex;
@@ -115,16 +115,14 @@ footer>button:last-child:hover {
   box-shadow: 0px 10px 20px #CCF1E6;
 }
 
-/* styling message after all dogs are rendered on the page */
 .end-message {
-  padding: 0.8em;
+  padding: 1em;
   font-size: 2rem;
   font-family: inherit;
   color: black;
   font-weight: 700;
   text-align: center;
   width: 100%;
-  margin: 0 auto;
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%,
       rgba(246, 247, 251, 1) 100%);
   border-radius: 16px;
