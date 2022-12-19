@@ -16,7 +16,8 @@ body {
   font-family: 'Poppins', sans-serif;
   max-width: 550px;
   margin: 0 auto;
-  border: 1px solid black;
+  border: 5px solid black;
+  border-radius: 20px;
   margin-bottom: 2rem;
 }
 
@@ -26,24 +27,27 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: rgba(255, 255, 255, 1);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
 }
 
 header>img {
   cursor: pointer;
-  width: 2.125rem;
-  /* find another way to set width */
-  height: 2.125rem;
-  /* find another way to set height */
+  width: 6%;
+  height: 6%;
 }
 
 header>img:nth-child(2) {
-  width: 82px;
+  width: 16%;
   height: auto;
 }
 
 /* styling main page content */
 .container {
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(246, 247, 251, 1) 100%);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 main {
@@ -109,4 +113,23 @@ footer>button:last-child:hover {
   background-color: rgba(219, 255, 244, 1);
   transition: background-color 0.5s ease;
   box-shadow: 0px 10px 20px #CCF1E6;
+}
+
+/* styling message after all dogs are rendered on the page */
+.end-message {
+  padding: 0.8em;
+  font-size: 2rem;
+  font-family: inherit;
+  color: black;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%,
+      rgba(246, 247, 251, 1) 100%);
+  border-radius: 16px;
+}
+
+.emoji {
+  font-size: 4rem;
 }

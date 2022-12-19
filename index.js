@@ -1,71 +1,69 @@
 import dogs from "./data.js";
+import Dog from "./Dog.js";
 
-let hasBeenDisliked = false;
+// taking controle over LIKE button
+function handleLike() {
+  if (!dog.hasBeenSwiped) {
+    dog.hasBeenLiked = true;
+    dog.hasBeenSwiped = true;
+    if (dog.hasBeenSwiped) {
+      setTimeout(() => {
+        dog = new Dog(getNewDog());
+        render();
+        dog.hasBeenSwiped = false;
+        if (!dog.name) {
+          endApp();
+        }
+      }, 1000);
+    }
+    render();
+  }
+}
+document.getElementById("like").addEventListener("click", handleLike);
 
-class Dog {
-  constructor(data) {
-    Object.assign(this, data);
-  }
-  getLike() {
-    return `
-    <img class="like-badge" src="/images/badge-like.png" alt="">
-    `;
-  }
-  getNope() {
-    return `
-    <img class="like-badge" src="/images/badge-nope.png" alt="">
-    `;
-  }
-
-  getEndMesagge() {}
-  getDog() {
-    const { name, avatar, age, bio, hasBeenLiked, hasBeenSwiped } = this;
-    return `
-    ${hasBeenLiked ? this.getLike() : hasBeenDisliked ? this.getNope() : ""}
-    <img class="dog-img" src="${avatar}" alt="">
-    <div class="description">
-      <h2 class="dog-name">${name}, ${age}</h2>
-      <p class="dog-desc">${bio}</p>
-    </div>`;
+// taking controle over CROSS button
+function handleCross() {
+  if (!dog.hasBeenSwiped) {
+    dog.hasBeenDisliked = true;
+    dog.hasBeenLiked = false;
+    dog.hasBeenSwiped = true;
+    if (dog.hasBeenSwiped) {
+      setTimeout(() => {
+        dog = new Dog(getNewDog());
+        dog.hasBeenDisliked = false;
+        dog.hasBeenSwiped = false;
+        render();
+        if (!dog.name) {
+          endApp();
+        }
+      }, 1000);
+    }
+    render();
   }
 }
 
-document.getElementById("like").addEventListener("click", function () {
-  dog.hasBeenLiked = true;
-  dog.hasBeenSwiped = true;
-  if (dog.hasBeenSwiped) {
-    setTimeout(() => {
-      isClicked = true;
-      dog = new Dog(getNewDog());
-      render();
-      isClicked = false;
-    }, 2000);
-  }
-  render();
-});
+document.getElementById("cross").addEventListener("click", handleCross);
 
-document.getElementById("cross").addEventListener("click", function () {
-  hasBeenDisliked = true;
-  dog.hasBeenLiked = false;
-  dog.hasBeenSwiped = true;
-  if (dog.hasBeenSwiped) {
-    setTimeout(() => {
-      dog = new Dog(getNewDog());
-      dog.hasBeenDisliked = false;
-      hasBeenDisliked = false;
-      render();
-    }, 2000);
-  }
-  render();
-});
-
+// defining new instance of dog
 function getNewDog() {
   return dogs.length > 0 ? dogs.shift() : {};
 }
 
-function render() {
-  return (document.getElementById("main").innerHTML = dog.getDog());
+// display message after last dog in dogs array
+function endApp() {
+  return (document.body.innerHTML = `
+    <div class="end-message">
+      <p>New Tindog profiles are coming. Stay tuned!</p>
+      <p class="emoji">😍</p>
+    </div>
+  `);
 }
 
+// rendering content to main section
+function render() {
+  document.getElementById("main").innerHTML = dog.getDog();
+}
+
+// declaring new dog
 let dog = new Dog(getNewDog());
 render();
